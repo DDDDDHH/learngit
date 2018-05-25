@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片位置变换</title>
+    <style type="text/css">
+        #img1{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 412px;
+            left: 536px;
+        }
+        #img2{
+            position: absolute;
+            left: 400px;
+            top: 20px;
+        }
+        audio{
+            float: right;
+        }
+
+          .processcontainer{
+              width:5px;
+              border:1px solid #6C9C2C;
+              height:450px;
+          }
+        #processbar{
+            background:#95CA0D;
+            float:right;
+            width:100%;
+            /*text-align:center;*/
+            /*!*line-height:150%;*!*/
+        }
+        .processcontainer{
+            position: absolute;
+            top: 25px;
+            left: 380px;
+        }
+        .flagcontainer{
+            width:5px;
+            border:1px solid red;
+            height:450px;
+        }
+        #flagbar{
+            background:red;
+            float:right;
+            width:100%;
+            /*text-align:center;*/
+            /*!*line-height:150%;*!*/
+        }
+        .flagcontainer{
+            position: absolute;
+            top: 25px;
+            left: 370px;
+        }
+
+    </style>
+
+</head>
+<body>
+<!--国歌进度条-->
+<div class="processcontainer">
+    <div id="processbar" style="height:100%;"></div>
+</div>
+<!--国旗进度条-->
+<div class="flagcontainer">
+    <div id="flagbar" style="height:100%;"></div>
+</div>
+
+<!--升旗部分-->
+<img id="img2" src="end.png">
+<img id="img1" src="flag.gif" >
+<input type="button" onclick="startRise()" value="变化" style="margin-left: 100px">
+<audio src="guoge2.mp3" id="aa" controls="controls" loop="false" hidden></audio>
+<input type="button" onclick="fangGe()" value="控制音乐">
+
+
+<script type="text/javascript">
+
+
+
+    var count = 0;
+    function fangGe() {
+        var songObj = document.getElementById('aa');
+        // songObj.currentTime;//播放进度
+        // songObj.duration;//播放时间
+
+        //进度条控制
+        count = count + 1;
+        var bartimer = window.setInterval(function(){setProcess();},480);
+        function setProcess(){
+            var processbar = document.getElementById("processbar");
+            if(count%2==1)
+            {
+                processbar.style.height = parseFloat(processbar.style.height) - 0.5 + "%";
+            }
+            // processbar.style.width = parseInt(processbar.style.width) + 1 + "%";
+
+            //processbar.innerHTML = processbar.style.width;显示进度
+
+            if(processbar.style.height == "0%"){
+                window.clearInterval(bartimer);
+            }
+        }
+
+        //歌曲控制
+        if (songObj.paused)
+        {
+            songObj.play();
+        }
+        else
+            songObj.pause();
+    }
+
+    var poLen = '400px';
+    function startRise() {
+
+        //进度条控制
+            var flagbar = document.getElementById("flagbar");
+            var flagfloat = parseFloat(flagbar.style.height)
+        if(flagfloat>0)
+        {
+            flagbar.style.height = flagfloat - 1.52 + "%";
+        }
+        else
+        {
+            flagbar.style.height = "0%";
+        }
+
+        
+        var imgObj = document.getElementById('img1');
+        imgObj.style.top = poLen;
+        var polenInt = parseInt(poLen);
+            // alert(polenInt);
+        if(polenInt>60) {
+            polenInt = polenInt - 5;
+        }
+        else
+        {
+            alert("完成")
+        }
+        poLen = (polenInt+'px').toString();
+        //alert(poLen);
+
+
+    }
+</script>
+</body>
+</html>
