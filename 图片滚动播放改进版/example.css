@@ -1,0 +1,12 @@
+.div1{
+    width: 535px;
+    height: 300px;
+    margin: 0px auto;
+    border: 2px solid red;
+    overflow: hidden;
+}
+img {
+    width: 535px;
+    height: 300px;
+    position: absolute;
+}
