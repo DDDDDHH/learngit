@@ -1,5 +1,4 @@
-Git is a distributed version control system.
-Git is free software distributed under the GPL.
-
-
-hello world!
+用js实现的一些简单效果：
+1.升国旗  设置了国歌的进度条，然后通过点击按钮实现升国旗<br>
+2.自己手写一个轮播图效果，效果是非常不好<br>
+3.改进了一下，但在网上找了一些轮播图的，发现效果还是没他们的好。应该适当的学会参考，不然自己蒙头瞎学的效果应该并不好。<br>
